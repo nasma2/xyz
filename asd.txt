@@ -1,0 +1,29 @@
+wireshark:
+
+
+
+
+
+ssl:
+
+sudo apt update
+sudo apt-get install apache2 apache2-doc apache2-utils openssl
+sudo mkdir /etc/apache2/ssl
+cd /etc/apache2
+ll
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apachekeynew.key -out /etc/apache2/ssl/apachekeynew.cert
+cd ssl
+ls
+ls -l
+etc:
+sudo a2enmod ssl
+etc:cd__apache2/sites-available__
+sudo vim default-ssl.conf
+ /etc/apache2/ssl/apachekeynew.cert
+ /etc/apache2/ssl/apachekeynew.key
+
+apachectl stop
+   /etc/init.d/apache2 start
+
+sudo a2ensite default-ssl.conf
+systemctl reload apache2
